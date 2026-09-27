@@ -56,3 +56,10 @@ problem2_df = tibble(
 problem2_df
 ```
 
+```{r}
+mean(pull(problem2_df, random_sample))
+mean(pull(problem2_df, positive))
+mean(pull(problem2_df, character_vec))
+mean(pull(problem2_df, factor_vec))
+```
+The mean works for the numeric and logical variables, but not for the character or factor variables. The mean of `random_sample` is `r mean(pull(problem2_df, random_sample))`. For the logical variable, R treats `TRUE` as 1 and `FALSE` as 0, so its mean is `r mean(pull(problem2_df, positive))`, which means that `r mean(pull(problem2_df, positive)) * 100`% of the values are `TRUE`. The character and factor variables do not have directly meaningful numeric means.
