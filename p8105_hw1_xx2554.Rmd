@@ -63,3 +63,14 @@ mean(pull(problem2_df, character_vec))
 mean(pull(problem2_df, factor_vec))
 ```
 The mean works for the numeric and logical variables, but not for the character or factor variables. The mean of `random_sample` is `r mean(pull(problem2_df, random_sample))`. For the logical variable, R treats `TRUE` as 1 and `FALSE` as 0, so its mean is `r mean(pull(problem2_df, positive))`, which means that `r mean(pull(problem2_df, positive)) * 100`% of the values are `TRUE`. The character and factor variables do not have directly meaningful numeric means.
+
+```{r, results='hide'}
+as.numeric(pull(problem2_df, positive))
+as.numeric(pull(problem2_df, character_vec))
+as.numeric(pull(problem2_df, factor_vec))
+```
+When the logical variable is converted to numeric, `FALSE` becomes `r as.numeric(FALSE)` and `TRUE` becomes `r as.numeric(TRUE)`. Therefore, the mean of a logical variable can be calculated, and it represents the proportion of `TRUE` values.
+
+The character variable cannot be converted into meaningful numeric values, so the conversion produces `NA`. This also explains why the mean cannot be calculated for the character variable.
+
+When the factor variable is converted to numeric, R returns the numeric codes of its factor levels. In this case, `large`, `medium`, and `small` are coded as `r as.numeric(factor("large", levels = levels(problem2_df$factor_vec)))`, `r as.numeric(factor("medium", levels = levels(problem2_df$factor_vec)))`, and `r as.numeric(factor("small", levels = levels(problem2_df$factor_vec)))`. These numbers are only internal codes for the categories and do not have meaningful numerical values, so taking the mean of a factor variable is not meaningful.
