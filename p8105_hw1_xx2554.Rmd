@@ -36,3 +36,23 @@ ggsave("penguins_scatterplot.png")
 ```
 
 
+## Problem 2
+```{r}
+problem2_df = tibble(
+  random_sample = rnorm(10),
+  positive = random_sample > 0,
+  character_vec = c(
+    "latte", "americano", "cappuccino", "mocha", "espresso",
+    "macchiato", "flat white", "cold brew", "cortado", "affogato"
+  ),
+  factor_vec = factor(
+    c(
+      "small", "medium", "large", "small", "medium",
+      "large", "small", "medium", "large", "small"
+    )
+  )
+)
+
+problem2_df
+```
+
